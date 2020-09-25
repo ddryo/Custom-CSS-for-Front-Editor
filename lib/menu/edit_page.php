@@ -40,6 +40,7 @@ $now_tab = $_GET['tab'] ?? 'editor';
 		</div>
 	</div>
 	<div class="fecss-setting__body">
+		<p>※ プラグイン内のファイルを直接編集します。データベースに値を保存するわけではないのでご注意ください。</p>
 		<form method="post" action="">
 			<?php
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -48,7 +49,7 @@ $now_tab = $_GET['tab'] ?? 'editor';
 				// タブコンテンツの読み込み
 				$content_path = FECSS_PATH . 'lib/menu/page/' . $now_tab . '.php';
 				if ( file_exists( $content_path ) ) {
-					include_once $content_path;
+				include_once $content_path;
 				}
 
 				// Nonce
@@ -60,3 +61,17 @@ $now_tab = $_GET['tab'] ?? 'editor';
 		</form>
 	</div>
 </div>
+
+<!-- <script>
+	$(function(){
+		$("textarea").change(function() {
+			$(window).on('beforeunload', function() {
+				return '投稿が完了していません。このまま移動しますか？';
+			});
+		});
+		$("input[type=submit]").click(function() {
+			$(window).off('beforeunload');
+		});
+	});
+	</script>
+</script> -->
