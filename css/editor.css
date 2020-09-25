@@ -2,6 +2,6 @@
 /* ブロックエディターにのみ読み込ませたいCSS */
 
 .block-editor .editor-styles-wrapper {
-    background-color: #fff !important;
+    background-color: #fff;
     color: #333;
 }

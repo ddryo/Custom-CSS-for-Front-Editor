@@ -3,7 +3,7 @@
  * Plugin Name: Custom CSS for Front & Editor
  * Plugin URI: https://github.com/ddryo/Custom-CSS-for-Front-Editor
  * Description: ブロックエディター用とフロント用のCSSを追加し、管理画面からも編集できるようになります。
- * Version: 1.0
+ * Version: 1.0.0
  * Author: 了
  * Author URI: https://twitter.com/ddryo_loos
  * License: GPL2 or later
