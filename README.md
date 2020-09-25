@@ -9,3 +9,10 @@
 - `editor.css` : ブロックエディターで読み込む
 - `front.css` : フロントでのみ読み込む
 - `common.css` : フロント & エディターで読み込む
+
+# Dwonload
+プラグイン本体のダウンロードは以下のリリースページからどうぞ。
+
+https://github.com/ddryo/Custom-CSS-for-Front-Editor/releases
+
+最新版の `custom_css_for_fe-{version}.zip`をダウンロードしてご利用ください。
