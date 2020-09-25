@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* ブロックエディターにのみ読み込ませたいCSS */
+
+.block-editor .editor-styles-wrapper {
+    background-color: #fff !important;
+    color: #333;
+}

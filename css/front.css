@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* フロントにのみ読み込ませたいCSS */
+
+#site-header{
+	background: #000;
+}

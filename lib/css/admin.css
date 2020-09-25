@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#wpcontent {
+  /* padding: 16px 40px; */
+}
+
+.fecss-setting h1.fecss-setting__title {
+  font-size: 2em
+}
+
+.fecss-setting h2 {
+  margin: 2em 0 1em;
+  padding: 8px 4px;
+  font-size: 1.75em;
+  border-bottom: 1px solid #000
+}
+
+.fecss-setting h3 {
+  margin: 2em 0 1em;
+  padding: 4px 12px;
+  font-size: 1.25em;
+  border-left: 4px solid #000
+}
+
+/* タブナビ */
+/* .fecss-setting .nav-tab-active {
+    background: #fff
+} */
+
+/* タブコンテンツ */
+/* .fecss-setting .tab-contents:not(.is-active) {
+  display: none
+} */
+
