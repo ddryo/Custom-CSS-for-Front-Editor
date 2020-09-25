@@ -1,14 +1,7 @@
 {
-    "name": "WP Arkhe",
+    "name": "",
     "description": "",
-    "type": "wordpress-theme",
     "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Ryo Yamasaki",
-            "homepage": "https://swell-theme.com/"
-        }
-    ],
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
         "wp-coding-standards/wpcs": "^2.3",
