@@ -28,7 +28,6 @@ class Filesystem {
 
 		// url
 		if ( ! $url ) {
-			// $url = wp_nonce_url( 'customize.php?return=' . rawurlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
 			$url = wp_nonce_url( 'admin.php?page=fecss-editor' );
 		}
 

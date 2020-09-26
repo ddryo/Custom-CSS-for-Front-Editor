@@ -59,10 +59,13 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 	// 設定ページにだけ読み込むファイル
 	if ( $is_fecss_page ) {
 		wp_enqueue_style( 'fecss-admin', FECSS_URL . 'lib/css/admin.css', [], FECSS_VERSION );
+		wp_enqueue_script( 'fecss-admin', FECSS_URL . 'lib/js/admin.js', ['jquery' ], FECSS_VERSION, true );
 
 		/**
 		 * code mirror
 		 */
+		// wp_enqueue_editor();
+
 		// see: https://codemirror.net/doc/manual.html#config
 		$codemirror = [
 			'tabSize'           => 4,
