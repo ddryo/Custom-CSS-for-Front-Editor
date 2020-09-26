@@ -16,7 +16,7 @@ add_action( 'admin_menu', function () {
 		'fecss-editor', // このメニューを参照するスラッグ名
 		'\FECSS_Editor\display_edit_page', // 表示内容
 		'', // アイコン
-		30 // 管理画面での表示位置
+		90 // 管理画面での表示位置
 	);
 } );
 
@@ -40,27 +40,32 @@ add_action( 'admin_init', function() {
 	// nonceチェック
 	if ( ! wp_verify_nonce( $_POST['fecss_nonce_save'], 'fecss_action_save' ) ) return;
 
-	$new_text  = '';
-	$file_path = '';
+	$new_text = '';
+	$css_type = '';
 	if ( isset( $_POST['front_css'] ) ) {
-		$new_text  = $_POST['front_css'];
-		$file_path = FECSS_PATH . 'css/front.css';
+		$css_type = 'front';
+		$new_text = $_POST['front_css'];
 	} elseif ( isset( $_POST['editor_css'] ) ) {
-		$new_text  = $_POST['editor_css'];
-		$file_path = FECSS_PATH . 'css/editor.css';
-
+		$css_type = 'editor';
+		$new_text = $_POST['editor_css'];
 	} elseif ( isset( $_POST['common_css'] ) ) {
-		$new_text  = $_POST['common_css'];
-		$file_path = FECSS_PATH . 'css/common.css';
+		$css_type = 'common';
+		$new_text = $_POST['common_css'];
 	}
 
-	if ( ! $new_text || ! $file_path ) return;
+	if ( ! $new_text ) return;
 
 	$new_text = str_replace( "\r\n", "\n", $new_text );
-	$new_text = \FECSS_Editor\Filesystem::convert_utf( $new_text );
+	$new_text = \FECSS_Editor\convert_utf( $new_text );
+	$new_text = sanitize_textarea_field( $new_text );
 	$new_text = stripslashes_deep( $new_text );
 
-	$saved = \FECSS_Editor\Filesystem::save( $file_path, $new_text );
+	// DBに保存
+	$saved = update_option( 'fecss_' . $css_type, $new_text );
+
+	// ファイルの書き換え
+	// $file_path = FECSS_PATH . 'css/' . $css_type . '.css';
+	// $saved = \FECSS_Editor\Filesystem::save( $file_path, $new_text );
 
 	if ( $saved ) {
 		$_POST['fecss_saved'] = '1';

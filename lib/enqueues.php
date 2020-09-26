@@ -2,54 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * フロント用のファイルを読み込む
- */
-add_action( 'wp_enqueue_scripts', function() {
-
-	/* フロント & エディター共通のスタイル */
-	wp_enqueue_style(
-		'fecss-common',
-		FECSS_URL . 'css/common.css',
-		[],
-		FECSS_VERSION
-	);
-
-	/* フロント用のスタイル */
-	wp_enqueue_style(
-		'fecss-front',
-		FECSS_URL . 'css/front.css',
-		[],
-		FECSS_VERSION
-	);
-
-}, 20 );
-
-
-/**
- * エディター用のファイルを読み込む
- */
-add_action( 'enqueue_block_editor_assets', function() {
-
-	/* フロント & エディター共通のスタイル */
-	wp_enqueue_style(
-		'fecss-common',
-		FECSS_URL . 'css/common.css',
-		[],
-		FECSS_VERSION
-	);
-
-	/* ブロックエディター用のスタイル */
-	wp_enqueue_style(
-		'fecss-editor',
-		FECSS_URL . 'css/editor.css',
-		[],
-		FECSS_VERSION
-	);
-
-}, 20 );
-
-
-/**
  * プラグイン設定画面用のファイルを読み込む
  */
 add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
@@ -110,3 +62,31 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 
 	}
 } );
+
+
+/**
+ * フロント用のファイルを読み込む
+ */
+// add_action( 'wp_enqueue_scripts', function() {
+
+// 	// フロント & エディター共通のスタイル
+// 	wp_enqueue_style( 'fecss-common', FECSS_URL . 'css/common.css', [], FECSS_VERSION );
+
+// 	// フロント用のスタイル
+// 	wp_enqueue_style( 'fecss-front', FECSS_URL . 'css/front.css', [], FECSS_VERSION );
+
+// }, 20 );
+
+
+/**
+ * エディター用のファイルを読み込む
+ */
+// add_action( 'enqueue_block_editor_assets', function() {
+
+// 	// フロント & エディター共通のスタイル
+// 	wp_enqueue_style( 'fecss-common', FECSS_URL . 'css/common.css', [], FECSS_VERSION );
+
+// 	// ブロックエディター用のスタイル
+// 	wp_enqueue_style( 'fecss-editor', FECSS_URL . 'css/editor.css', [], FECSS_VERSION );
+
+// }, 20 );

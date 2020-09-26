@@ -40,18 +40,45 @@ $now_tab = $_GET['tab'] ?? 'editor';
 		</div>
 	</div>
 	<div class="fecss-setting__body">
-		<p>※ プラグイン内のファイルを直接編集します。データベースに値を保存するわけではないのでご注意ください。</p>
+		<?php
+			$message = '';
+			switch ( $now_tab ) {
+				case 'editor':
+					$message = 'ブロックエディターにのみ読み込ませるCSS';
+					break;
+				case 'front':
+					$message = 'フロント（サイト表示側）にのみ読み込ませるCSS';
+					break;
+				default:
+					$message = 'フロント & エディターの両方に読み込ませるCSS';
+					break;
+			}
+		?>
+		<p><?=esc_html( $message )?></p>
 		<form method="post" action="">
 			<?php
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				// echo '<div>' . $now_tab . '</div>';
+				// ファイル直接変種時
+				// $content = '';
+				// $file    = FECSS_PATH . 'css/' . $now_tab . '.css';
+				// if ( is_file( $file ) && file_exists( $file ) ) {
+				// 	$content = \FECSS_Editor\Filesystem::get_contents( $file );
+				// 	$content = \FECSS_Editor\convert_utf( $content );
+				// }
 
-				// タブコンテンツの読み込み
-				$content_path = FECSS_PATH . 'lib/menu/page/' . $now_tab . '.php';
-				if ( file_exists( $content_path ) ) {
-				include_once $content_path;
-				}
+				// DBから取得
+				$content = get_option( 'fecss_' . $now_tab ) ?: '';
+				$content = \FECSS_Editor\convert_utf( $content );
 
+				// name, id
+				$name = $now_tab . '_css';
+
+				// #template にするとコードが自動で広くなる
+				?>
+				<div id="template">
+					<?php // textarea の中はそのまま出ちゃうので無闇にインデント揃えたりしないように注意 ?>
+					<textarea cols="60" rows="30" name="<?=esc_attr( $name )?>" id="<?=esc_attr( $name )?>" class="fecss-edit-area" ><?php echo esc_textarea( $content ); ?></textarea>
+				</div>
+			<?php
 				// Nonce
 				wp_nonce_field( 'fecss_action_save', 'fecss_nonce_save' );
 

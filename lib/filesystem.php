@@ -1,6 +1,8 @@
 <?php
 namespace FECSS_Editor;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class Filesystem {
 
 	public static function init( $url = '' ) {
@@ -90,32 +92,4 @@ class Filesystem {
 		}
 		return $file_content;
 	}
-
-	/**
-	 * UTF-8にエンコード
-	 */
-	public static function convert_utf( $text = '' ) {
-
-		if ( empty( $text ) ) return '';
-
-		// ヌル文字があれば
-		if ( stripos( $text, chr( 0x00 ) ) !== false ) return '';
-
-		// 日本語にセット
-		// get_locale() === 'ja'
-		// mb_language( 'Japanese' );
-
-		// UTF-8 かどうか
-		// $is_utf8  = mb_detect_encoding( $text, 'UTF-8', true );
-
-		// UTF-8 以外ならエンコードして返す
-		// $charcode = mb_detect_encoding( $text );
-		$charcode = mb_detect_encoding( $text, 'ASCII, JIS, ISO-2022-JP, UTF-8, CP51932, SJIS-win', true );
-		if ( 'UTF-8' !== $charcode ) {
-			return mb_convert_encoding( $text, 'UTF-8', $charcode );
-		}
-
-		return $text;
-	}
-
 }
